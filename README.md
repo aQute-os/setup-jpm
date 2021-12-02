@@ -1,14 +1,15 @@
-# :gear: `setup-gh` ![](https://github.com/github-developer/setup-gh/workflows/Tests/badge.svg)
-> An example action, demonstrating how CLI authors may develop actions that allow setup their of CLIs on GitHub's  hosted runners, using JavaScript
+# :gear: `setup-bnd` ![](https://github.com/pkriens/setup-bnd/workflows/Tests/badge.svg)
+> A Github Action to install bnd
 
 ## About
-This action, which is intended _for demonstration use only_, sets up the GitHub CLI, [`gh`](https://github.com/cli/cli), on GitHub's hosted Actions runners.
 
-This action can be run on `ubuntu-latest`, `windows-latest`, and `macos-latest` GitHub Actions runners, and will install and expose a specified version of the `gh` CLI on the runner environment.
+This action will install the bnd jar so that it becomes available in the shell.
+
+This action can be run on `ubuntu-latest`, `windows-latest`, and `macos-latest` GitHub Actions runners, and will install and expose a specified version of the `bnd` CLI on the runner environment. This action requires the installation of java
 
 ## Usage
 
-Setup the `gh` CLI:
+Setup the `bnd` CLI:
 
 ```yaml
 steps:
@@ -19,7 +20,7 @@ A specific version of the `gh` CLI can be installed:
 
 ```yaml
 steps:
-- uses: github-developer/setup-gh@v1
+- uses: bndtools/setup-bnd@v1
   with:
     version:
       1.1.0
@@ -30,8 +31,3 @@ The actions supports the following inputs:
 
 - `version`: The version of `gh` to install, defaulting to `1.2.0`
 
-## Further reading
-For information on Creating a JavaScript action, read [the docs](https://docs.github.com/actions/creating-actions/creating-a-javascript-action).
-
-## License
-[MIT](LICENSE).
