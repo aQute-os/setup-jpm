@@ -1,0 +1,10 @@
+name: setup-bnd
+description: Setup bnd CLI
+inputs:
+  version:
+    description: Version of bnd
+    required: false
+    default: 6.1.0-SNAPSHOT
+runs:
+  using: node12
+  main: dist/index.js
