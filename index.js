@@ -12,8 +12,4 @@ async function setup() {
   }
 }
 
-module.exports = setup
-
-if (require.main === module) {
-  setup();
-}
+setup();
