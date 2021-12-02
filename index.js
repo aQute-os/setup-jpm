@@ -1,23 +1,11 @@
-const path = require('path');
 const core = require('@actions/core');
+const exec = require('@actions/exec');
 const tc = require('@actions/tool-cache');
-const { getDownloadObject } = require('./lib/utils');
 
 async function setup() {
   try {
-    // Get version of tool to be installed
-    const version = core.getInput('version');
-
-    // Download the specific version of the tool, e.g. as a tarball/zipball
-    const download = getDownloadObject(version);
-    const pathToTarball = await tc.downloadTool(download.url);
-
-    // Extract the tarball/zipball onto host runner
-    const extract = download.url.endsWith('.zip') ? tc.extractZip : tc.extractTar;
-    const pathToCLI = await extract(pathToTarball);
-
-    // Expose the tool by adding it to the PATH
-    core.addPath(path.join(pathToCLI, download.binPath));
+    const jpm = await tc.downloadTool('https://repo1.maven.org/maven2/biz/aQute/bnd/biz.aQute.jpm.run/3.5.0/biz.aQute.jpm.run-3.5.0.jar', 'jpm.jar');
+    await exec.exec("java -jar",[ jpm, "init"]);
   } catch (e) {
     core.setFailed(e);
   }
