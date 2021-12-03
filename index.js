@@ -15,7 +15,9 @@ async function setup() {
       "jpm.jar"
     );
     await exec.exec("java -jar jpm.jar -B bin init");
-    await exec.exec("bin/jpm install -f ");
+    await exec.exec(
+      "bin/jpm install -f https://github.com/pkriens/setup-bnd/raw/master/jar/biz.aQute.bnd.jar"
+    );
     core.addPath("bin");
   } catch (e) {
     console.log(e);
