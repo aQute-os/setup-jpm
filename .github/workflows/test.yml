@@ -23,7 +23,7 @@ jobs:
           distribution: "temurin"
           java-version: 8
       - name: Run bnd
-        id: bnd buildtool
+        id: bnd_buildtool
         uses: pkriens/setup-bnd@v0.0
         with:
           version: 1
