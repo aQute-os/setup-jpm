@@ -11,7 +11,7 @@ async function setup() {
   try {
     const bndLocal = await tc.downloadTool(bndRemote);
     await exec.exec(`java -jar ${bndLocal} version`);
-    fs.mkdir(".bin");
+    fs.mkdirSync(".bin");
     fs.writeFileSync(".bin/bnd", `#!/bin/sh\njava -jar ${bndLocal}\n`);
     fs.writeFileSync(".bin/bnd.bat", `java -jar ${bndLocal}\n`);
     fs.chmodSync(".bin/bnd", "a+x");
