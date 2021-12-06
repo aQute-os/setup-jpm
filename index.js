@@ -14,7 +14,7 @@ async function setup() {
     fs.mkdirSync(".bin");
     fs.writeFileSync(
       ".bin/bnd",
-      "#!/bin/sh\njava -jar " + bndLocal + ' "$@"\n'
+      "#!/bin/sh\njava -jar " + bndLocal.replace("//", "////") + ' "$@"\n'
     );
     fs.chmodSync(".bin/bnd", 0o777);
 
