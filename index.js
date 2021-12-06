@@ -2,19 +2,20 @@ const fs = require("fs");
 const core = require("@actions/core");
 const exec = require("@actions/exec");
 const tc = require("@actions/tool-cache");
+const { formatWithOptions } = require("util");
 
 const bndRemote =
   "https://github.com/pkriens/setup-bnd/raw/master/jar/biz.aQute.bnd.jar";
 
 async function setup() {
   try {
-    try {
-      fs.unlinkSync(bndLocal);
-    } catch (e) {
-      // ignore
-    }
     const bndLocal = await tc.downloadTool(bndRemote);
-    await exec.exec(`java -jar ${bndLocal} buildtool`);
+    await exec.exec(`java -jar ${bndLocal} version`);
+    fs.mkdir(".bin");
+    fs.writeFileSync(".bin/bnd", `#!/bin/sh\njava -jar ${bndLocal}\n`);
+    fs.writeFileSync(".bin/bnd.bat", `java -jar ${bndLocal}\n`);
+    fs.chmod(".bin/bnd", "a+x");
+    core.addPath("./bin");
   } catch (e) {
     console.log(e);
     core.setFailed(e);
