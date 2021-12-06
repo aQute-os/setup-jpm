@@ -24,7 +24,7 @@ jobs:
           java-version: 8
       - name: Setup bnd
         id: bnd
-        uses: pkriens/setup-bnd@v0.1
+        uses: pkriens/setup-bnd@v0.2
         with:
           version: 1
       - name: Test it
