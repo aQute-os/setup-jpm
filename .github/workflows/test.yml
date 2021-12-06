@@ -28,4 +28,4 @@ jobs:
         with:
           version: 1
       - name: Test it
-        run: ls .bin;./.bin/bnd version;bnd version
+        run: ls .bin;./.bin/bnd version;echo $PATH
