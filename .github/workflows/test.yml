@@ -11,6 +11,10 @@ defaults:
     shell: bash
 
 jobs:
+  runs-on: ${{ matrix.os }}
+  strategy:
+    matrix:
+      os: ["macos-latest", "windows-latest", "ubuntu-latest"]
   test:
     name: Test
     runs-on: ubuntu-latest
