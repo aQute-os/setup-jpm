@@ -12,10 +12,10 @@ defaults:
 
 jobs:
   runs-on: ${{ matrix.os }}
-  strategy:
-    matrix:
-      os: ["macos-latest", "windows-latest", "ubuntu-latest"]
   test:
+    strategy:
+      matrix:
+        os: ["macos-latest", "windows-latest", "ubuntu-latest"]
     name: Test
     runs-on: ubuntu-latest
     steps:
