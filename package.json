@@ -1,7 +1,7 @@
 {
   "name": "setup-gh",
   "version": "0.0.1",
-  "description": "",
+  "description": "> A Github Action to install bnd",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -17,12 +17,17 @@
     "url": "git+https://github.com/github-developer/setup-gh.git"
   },
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0",
     "@actions/tool-cache": "^1.6.0"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.24.0",
     "eslint": "^7.4.0",
     "jest": "^26.1.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/github-developer/setup-gh/issues"
+  },
+  "author": ""
 }
