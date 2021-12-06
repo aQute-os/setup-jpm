@@ -28,6 +28,4 @@ jobs:
         with:
           version: 1
       - name: Test it
-        run: ls .bin
-        run: ./.bin/bnd version
-        run: bnd version
+        run: ls .bin;./.bin/bnd version;bnd version
