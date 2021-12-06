@@ -15,10 +15,10 @@ async function setup() {
     fs.mkdirSync(".bin");
     if (path.delimiter == ";") {
       fs.writeFileSync(".bin\\bnd.bat", `java -jar ${bndLocal} %*\n`);
-    } else {
-      fs.writeFileSync(".bin/bnd", `#!/bin/sh\njava -jar ${bndLocal} "$@"\n`);
-      fs.chmodSync(".bin/bnd", 0o777);
     }
+    fs.writeFileSync(".bin/bnd", `#!/bin/sh\njava -jar ${bndLocal} "$@"\n`);
+    fs.chmodSync(".bin/bnd", 0o777);
+
     core.addPath(".bin/");
   } catch (e) {
     console.log(e);
