@@ -24,6 +24,6 @@ jobs:
           java-version: 8
       - name: Run bnd
         id: bnd_buildtool
-        uses: pkriens/setup-bnd@v0.0
+        uses: pkriens/setup-bnd@v0.1
         with:
           version: 1
