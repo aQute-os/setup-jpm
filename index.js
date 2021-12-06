@@ -14,7 +14,7 @@ async function setup() {
     fs.mkdirSync(".bin");
     fs.writeFileSync(".bin/bnd", `#!/bin/sh\njava -jar ${bndLocal}\n`);
     fs.writeFileSync(".bin/bnd.bat", `java -jar ${bndLocal}\n`);
-    fs.chmodSync(".bin/bnd", "a+x");
+    fs.chmodSync(".bin/bnd", 0o777);
     core.addPath("./bin");
   } catch (e) {
     console.log(e);
