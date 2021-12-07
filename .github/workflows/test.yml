@@ -25,10 +25,10 @@ jobs:
         with:
           distribution: "temurin"
           java-version: 8
-      - name: Setup bnd
-        id: bnd
+      - name: Setup jpm
+        id: jpm
         uses: ./
         with:
           version: 1
       - name: Test it
-        run: bnd version
+        run: jpm version
