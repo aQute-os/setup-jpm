@@ -4,20 +4,13 @@ const exec = require("@actions/exec");
 const tc = require("@actions/tool-cache");
 const { formatWithOptions } = require("util");
 
-const bndRemote =
-  "https://github.com/pkriens/setup-bnd/raw/master/jar/biz.aQute.bnd.jar";
+const jpmRemote =
+  "https://github.com/pkriens/setup-bnd/raw/master/jar/biz.aQute.jpm.jar";
 
 async function setup() {
   try {
-    const bndLocal = await tc.downloadTool(bndRemote);
-    await exec.exec(`java -jar ${bndLocal} version`);
-    fs.mkdirSync(".bin");
-    fs.writeFileSync(
-      ".bin/bnd",
-      "#!/bin/sh\njava -jar " + bndLocal.replace(/\\/g, "\\\\") + ' "$@"\n'
-    );
-    fs.chmodSync(".bin/bnd", 0o777);
-
+    const jpmLocal = await tc.downloadTool(jpmRemote);
+    await exec.exec(`java -jar ${jpmLocal} -b .bin init`);
     core.addPath(".bin/");
   } catch (e) {
     console.log(e);
