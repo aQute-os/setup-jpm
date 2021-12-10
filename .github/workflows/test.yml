@@ -31,4 +31,6 @@ jobs:
         with:
           version: 1
       - name: Test it
-        run: jpm version
+        run: |
+          jpm -dt version
+          jpm -dt vms
