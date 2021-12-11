@@ -32,5 +32,7 @@ jobs:
           version: 1
       - name: Test it
         run: |
+          ls ${JAVA_HOME}
           jpm -dt version
           jpm -dt vms
+          jpm -dt install -f biz.aQute.bnd:biz.aQute.bnd
