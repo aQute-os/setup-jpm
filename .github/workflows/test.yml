@@ -35,4 +35,5 @@ jobs:
           ls ${JAVA_HOME}
           jpm -dt version
           jpm -dt vms
-          jpm -dt install -f biz.aQute.bnd:biz.aQute.bnd
+          jpm -dt install -f biz.aQute.bnd:biz.aQute.bnd:6.2.0-SNAPSHOT
+          bnd version
