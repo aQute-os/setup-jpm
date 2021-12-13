@@ -11,7 +11,6 @@ async function setup() {
   try {
     const jpmLocal = await tc.downloadTool(jpmRemote);
     await exec.exec(`java -jar ${jpmLocal} -td init`);
-    await exec.exec(`java -jar ${jpmLocal} -td vms`);
     core.addPath("~/.jpm/bin");
   } catch (e) {
     console.log(e);
