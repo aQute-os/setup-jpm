@@ -1,11 +1,12 @@
 # :gear: `setup-bnd` ![](https://github.com/pkriens/setup-bnd/workflows/Tests/badge.svg)
-> A Github Action to install bnd
+> A Github Action to install jpm
 
 ## About
 
-This action will install the bnd jar so that it becomes available in the shell.
+This action will install the jpm so that it becomes available in the shell. jpm can be used then to install
+commands from maven central or other maven repositories.
 
-This action can be run on `ubuntu-latest`, `windows-latest`, and `macos-latest` GitHub Actions runners, and will install and expose a specified version of the `bnd` CLI on the runner environment. This action requires the installation of java
+This action can be run on `ubuntu-latest`, `windows-latest`, and `macos-latest` GitHub Actions runners, and will install and expose a specified version of the `jpm` CLI on the runner environment. This action requires the installation of java.
 
 ## Usage
 
@@ -13,21 +14,34 @@ Setup the `bnd` CLI:
 
 ```yaml
 steps:
-- uses: github-developer/setup-gh@v1
+- uses: aQute-os/setup-jpm@v1
 ```
 
-A specific version of the `gh` CLI can be installed:
+## Example
 
-```yaml
-steps:
-- uses: bndtools/setup-bnd@v1
-  with:
-    version:
-      1.1.0
-```
+The following example installs jpm and then runs jython
 
-## Inputs
-The actions supports the following inputs:
+      name: release
 
-- `version`: The version of `gh` to install, defaulting to `1.2.0`
+      on:
+        push:
+        
+      jobs:
+        build:
+          name: build on OpenJDK Linux
+          runs-on: ubuntu-latest
+          steps:
+            - name: Git Checkout
+              uses: actions/checkout@v1
+            - name: Set up Java
+              uses: actions/setup-java@v1
+              with:
+                java-version: 1.8
+            - name:  install jpm
+              uses: aQute-os/setup-jpm@v1.0.0
+            - name: Run jython
+              shell: bash
+              run: |
+                  jpm install -n jython org.python:jython-standalone
+                  jython
 
